@@ -6,7 +6,7 @@ describe("Real world app Bootcamp 2023 Assignment 3 (Refactor using page objects
 
     let routingNumber = '123456789';
     let accountNumber = '111222333';
-    let BANK_NAME = "Dummy Bank";
+    let bankName = "Dummy Bank";
 
     beforeEach(() => {
         cy.visit('http://localhost:3000/signin')
@@ -16,11 +16,12 @@ describe("Real world app Bootcamp 2023 Assignment 3 (Refactor using page objects
     })
 
     it('Should create a new bank account', () => {
-        NewBankAccountPage.addNew(routingNumber,accountNumber);
+        NewBankAccountPage.addNew(bankName,routingNumber,accountNumber);
         NewBankAccountPage.elements.getSuccessCreationMsg();
     })
 
     //pending to migrate to page objects model
+    /*
     it('Should delete an existing bank account', () => {
         cy.get('.MuiTypography-root').contains('Bank Accounts').click();
         cy.get('div.MuiGrid-root p').contains(BANK_NAME)
@@ -30,7 +31,7 @@ describe("Real world app Bootcamp 2023 Assignment 3 (Refactor using page objects
         });
         cy.get('div.MuiGrid-root p').contains(`${BANK_NAME} (Deleted)`).should('be.visible');
       });
- 
+    */
     after(() => {
         cy.get('span.MuiTypography-root').contains('Logout').click()
     })

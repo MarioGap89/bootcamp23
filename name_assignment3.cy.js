@@ -6,6 +6,7 @@ describe("Real world app Bootcamp 2023 Assignment 3 (Refactor using page objects
 
     let routingNumber = '123456789';
     let accountNumber = '111222333';
+    let BANK_NAME = "Dummy Bank";
 
     beforeEach(() => {
         cy.visit('http://localhost:3000/signin')
@@ -21,14 +22,13 @@ describe("Real world app Bootcamp 2023 Assignment 3 (Refactor using page objects
 
     //pending to migrate to page objects model
     it('Should delete an existing bank account', () => {
-        const BANK_NAME = "Dummy Bank"
         cy.get('.MuiTypography-root').contains('Bank Accounts').click();
         cy.get('div.MuiGrid-root p').contains(BANK_NAME)
           .parents('[data-test*="bankaccount-list-item-"]')
           .within(() => {
             cy.get('[data-test="bankaccount-delete"]').click({ force: true });
         });
-        cy.get('div.MuiGrid-root p').eq(1).contains(`${BANK_NAME} (Deleted)`).should('be.visible');
+        cy.get('div.MuiGrid-root p').contains(`${BANK_NAME} (Deleted)`).should('be.visible');
       });
  
     after(() => {

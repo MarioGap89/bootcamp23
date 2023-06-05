@@ -11,16 +11,16 @@ export class NewBankAccount {
         getBankRoutingNumberTxt: () => cy.get('#bankaccount-routingNumber-input'),
         getBankAccountNumberTxt: () => cy.get('#bankaccount-accountNumber-input'),
         getSaveNew: () => cy.get('.MuiButton-label').contains('Save'),
-        getSuccessCreationMsg: () => cy.get('[data-test*="bankaccount-list-item"]').contains(BANK_NAME),
+        getSuccessCreationMsg: () => cy.get('[data-test*="bankaccount-list-item"]').contains("Dummy Bank"),
     }
   
     addNew(routingNumber, accountNumber) {
-        this.elements.getBankAccounts.click();
-        this.elements.getNewBankAccount.click({ force: true });
-        this.elements.getBankNameTxt.clear().type(BANK_NAME);
-        this.elements.getBankRoutingNumberTxt.clear().type(routingNumber);
-        this.elements.getBankAccountNumberTxt.clear().type(accountNumber);
-        this.elements.getSaveNew.click();
+        this.elements.getBankAccounts().click();
+        this.elements.getNewBankAccount().click({ force: true });
+        this.elements.getBankNameTxt().clear().type("Dummy Bank");
+        this.elements.getBankRoutingNumberTxt().clear().type(routingNumber);
+        this.elements.getBankAccountNumberTxt().clear().type(accountNumber);
+        this.elements.getSaveNew().click();
         this.elements.getSuccessCreationMsg();
     }
   }
